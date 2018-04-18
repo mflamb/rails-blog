@@ -1,0 +1,27 @@
+<h1>Edit Your Account Information</h1>
+<p>Find me in app/views/users/edit.html.erb</p>
+
+
+
+<%= form_for @user do |f| %>
+
+    <div>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+    </div>
+
+    <div>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+    </div>
+
+    <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+    </div>
+
+    <div>
+        <%= f.submit 'Edit Account' %>
+    </div>
+
+<% end %>
