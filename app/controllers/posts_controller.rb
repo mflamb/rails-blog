@@ -5,17 +5,19 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    # Add your comments display in here when you make comments model/controller
+    @comment = Comment.new 
+    @comments = Comment.where(post_id: @post.id)
   end
 
   def new
     @post = Post.new
-    # Add current_user.id instance variable once you set up sessions
+    @id = current_user.id
   end
 
   def create 
     Post.create(post_params)
-    redirect_to user_path # Add (current_user)
+    redirect_to user_path(current_user)
+  end
 
   def edit
     @post = Post.find(params[:id])
@@ -24,12 +26,13 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(update_params)
+    redirect_to user_path(current_user)
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to user_path # Add (current_user)
+    redirect_to user_path(current_user)
   end 
 
   private 

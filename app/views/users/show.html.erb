@@ -1,4 +1,27 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
 
-<h1><%= @user.username %>'s profile</h1>
+<div>
+<h1><%= @user.username %>'s profile</h1><br>
+
+<% if current_user == @user %><%= link_to "Create new post", new_user_post_path(current_user.id) %> <% else %><% end %>
+
+<% if current_user == @user %> <%= link_to "Edit Account", edit_user_path(current_user.id) %><% else %><% end %>
+
+<% if current_user == @user %> <%= link_to "Delete Account", @user, :method => :delete, data: {confirm: "Are you sure?"} %><% else %><% end %>
+
+
+<% @posts.reverse.each do |post| %>
+    <div class="post">
+    <h3>
+    <%= post.id  %> <%=link_to post.title, user_post_path(@user.id, post.id)  %>
+    </h3>
+     <% if current_user == @user %>
+      <%= link_to 'Edit',  edit_user_post_path(current_user, post.id) %>
+      <%= link_to 'Delete', post, :method => :delete, data: {confirm: "Are you sure?"} %>
+    <% else %>
+    <% end %>
+    <p><%=post.content  %></p>
+    </div>
+<% end %>  
+</div>
