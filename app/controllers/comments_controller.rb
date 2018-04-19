@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
 
     def create 
-        Commment.create(comment_params)
-        redirect_to '/'
+        Comment.create(comment_params)
+        redirect_to ('/users/%{user_id}/posts/%{id}')
     end
 
 
