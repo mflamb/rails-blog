@@ -5,7 +5,24 @@
 <h1>Posts</h1>
 
 <% @posts.reverse.each do |post| %>
-    <h2><%=post.title%></h2>
-    <p><%=post.content%></p>
-<% end %>
+    <div>
+    <h3>
+    <%= post.id  %> <%= link_to post.title, post_path(post.id)  %>
+    </h3>
+     <% if current_user == @user %>
+      <%= link_to 'Edit',  edit_user_post_path(current_user, post.id) %>
+      <%= link_to 'Delete', post, :method => :delete, data: {confirm: "Are you sure?"} %>
+    <% else %>
+    <% end %>
+    <p><%= post.content  %></p>
+    </div>
+<% end %>  
+
 </div>
+
+<%# <% @posts.reverse.each do |post| %>
+    <%# <h2><%=post.title </h2>  %>
+    <%# <p><%=post.content</p>  %>
+<%# <% end %> 
+
+<%# <%=link_to 'post.title, user_post_path(@user.id, post.id) '  %>

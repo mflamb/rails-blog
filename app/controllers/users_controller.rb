@@ -33,8 +33,6 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @posts = Post.find_by(user_id: params[:id])
-    @posts.each(& :destroy)
     @user.destroy
     @current_user = nil
     redirect_to '/'

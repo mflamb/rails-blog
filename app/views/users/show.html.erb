@@ -12,7 +12,7 @@
 
 
 <% @posts.reverse.each do |post| %>
-    <div class="post">
+    <div>
     <h3>
     <%= post.id  %> <%=link_to post.title, user_post_path(@user.id, post.id)  %>
     </h3>
