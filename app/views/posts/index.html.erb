@@ -1,28 +1,21 @@
-<h1>Posts#index</h1>
+<h1>Newsfeed</h1>
 <p>Find me in app/views/posts/index.html.erb</p>
 
 <div>
-<h1>Posts</h1>
+<h2>What's Everyone Saying??</h2>
 
 <% @posts.reverse.each do |post| %>
     <div>
-    <h3>
-    <%= post.id  %> <%= link_to post.title, post_path(post.id)  %>
-    </h3>
-     <% if current_user == @user %>
-      <%= link_to 'Edit',  edit_user_post_path(current_user, post.id) %>
-      <%= link_to 'Delete', post, :method => :delete, data: {confirm: "Are you sure?"} %>
-    <% else %>
-    <% end %>
-    <p><%= post.content  %></p>
+        <h3>
+        <%= post.id %> <%= link_to post.title, post_path(post.id) %>
+        </h3>
+        <% if current_user == @user %>
+        <%= link_to 'Edit',  edit_user_post_path(current_user, post.id) %>
+        <%= link_to 'Delete', post, :method => :delete, data: {confirm: "Are you sure?"} %>
+        <% end %>
+        <p><%= post.content %></p>
     </div>
 <% end %>  
 
 </div>
 
-<%# <% @posts.reverse.each do |post| %>
-    <%# <h2><%=post.title </h2>  %>
-    <%# <p><%=post.content</p>  %>
-<%# <% end %> 
-
-<%# <%=link_to 'post.title, user_post_path(@user.id, post.id) '  %>

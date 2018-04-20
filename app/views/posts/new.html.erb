@@ -1,26 +1,22 @@
-<h1>Posts#new</h1>
+<h1>Create A New Post</h1>
 <p>Find me in app/views/posts/new.html.erb</p>
 
 <div>
-<%= form_for @post, url: user_posts_path(current_user) do |f| %>
+    <%= form_for @post, url: user_posts_path(current_user) do |f| %>
     <div>
         <%= f.label "Title" %>
         <%= f.text_field :title %>
     </div>
-
     <div>
         <%= f.label "Content" %>
         <%= f.text_area :content %>
     </div>
-
     <div>
         <%= f.hidden_field :user_id, :value => current_user.id %>
     </div>
-
-
     <div>
         <%= f.submit 'Submit' %>
     </div>
 
-<% end %>
+    <% end %>
 </div>
