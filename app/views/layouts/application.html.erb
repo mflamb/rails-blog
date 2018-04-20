@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blog</title>
+    <title>Rails Lamblog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,30 +9,27 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
   <body>
-  <header>
-  <body>
-  <nav>
-    <div>
+    <nav>
       <div>
-        <a href="#">RailsBlog</a>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <% if logged_in? %>
+          <li><a href="/users/<%=current_user.id%>">Profile</a></li>
+          <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
+          <li><a href="/posts">Posts</a></li>
+          <% else %>
+          <li><a href="/signup">Create Account</a></li>
+          <li><a href="/login">Login</a></li>
+          <% end %>
+        </ul>
+        <ul>
+          <% if current_user == nil %><li>Please sign up or log in</li> <% else %> <h3>Hey <%= current_user.username%>, what's on your mind?</h3> 
+          <% end %>
+        </ul>
       </div>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <%if logged_in? %>
-      <li><a href="/users/<%=current_user.id%>">Profile</a></li>
-      <li><%= link_to "Log Out", logout_path, method: "delete"%></li>
-      <li><a href="/posts">Posts</a></li>
-    <%else%>
-      <li><a href="/signup">Create Account</a></li>
-      <li><a href="/login">Login</a></li>
-    <%end%>
-  </ul>
-    <ul>
-      <%if current_user == nil%><li>Please sign up or log in</li><%else%><p><%=current_user.username%>! What's on your mind?</p><%end%>
-    </ul>
-    </div>
-   </nav>
+    </nav>
     <%= yield %>
   </body>
 </html>

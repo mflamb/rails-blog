@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-
   end
 
   def create 
@@ -9,10 +8,10 @@ class SessionsController < ApplicationController
     puts "************************"
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
-        log_in @user
-        redirect_to posts_path
+      log_in @user
+      redirect_to posts_path
     else
-        render :new
+      render :new
     end
   end
 
