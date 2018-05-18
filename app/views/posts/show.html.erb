@@ -1,12 +1,12 @@
 <h1>Viewing This Post</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+
 
 <h2><%= @post.title %></h2>
 <p><%= @post.content %></p>
 <%= form_for @comment do |f|  %>
     <div>
         <%= f.label "Comment" %>
-        <%= f.text_field :content %>
+        <%= f.text_field :content, class: 'form-control' %>
     </div>
     <div>
         <%= f.hidden_field :user_id, :value => current_user.id %>
@@ -15,7 +15,7 @@
         <%= f.hidden_field :post_id, :value => @post.id %>
     </div>
     <div>
-        <%= f.submit 'Submit' %>
+        <%= f.submit 'Submit', class: 'btn btn-primary' %>
     </div>
 <% end %>
 
