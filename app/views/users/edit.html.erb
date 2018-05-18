@@ -1,5 +1,4 @@
 <h1>Edit Your Account Information</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
 
 
 
@@ -7,18 +6,18 @@
 
     <div>
         <%= f.label :username %>
-        <%= f.text_field :username %>
+        <%= f.text_field :username, class: 'form-control' %>
     </div>
     <div>
         <%= f.label :email %>
-        <%= f.text_field :email %>
+        <%= f.text_field :email, class: 'form-control' %>
     </div>
     <div>
         <%= f.label :password %>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, class: 'form-control' %>
     </div>
     <div>
-        <%= f.submit 'Edit Account' %>
+        <%= f.submit 'Edit Account', class: 'btn btn-primary' %>
     </div>
 
 <% end %>
